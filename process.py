@@ -13,6 +13,7 @@ def readWave(inputFilename):
 
 def preEmphasis(inputSignal ,inputAlpha):
     signal = np.append(inputSignal[0], inputSignal[1:] - inputAlpha * inputSignal[:-1]) # y(y) = x(t) - Apha*X(t-1)
+    return signal
 
 def plotWave(inputSignal, inputSample_Rate,inputfilename):
     x_value = np.arange(0, len(inputSignal), 1) / float(inputSample_Rate)    

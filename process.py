@@ -90,7 +90,9 @@ if __name__ == "__main__":
     _frames = windowing_frames(_frames, _frame_length)
 
     _mag_frames, _NFTT = convert_frames_fft(_frames, 512)
+
     _pow_spectrum = frame_power_spectrum(_mag_frames, _NFTT)
     _filter_banks = fb(_pow_spectrum, _sample_rate, _NFTT, 40)
     _mfcc = mfcc(_filter_banks, 12, 40)    
+    
     print(_mfcc[0])

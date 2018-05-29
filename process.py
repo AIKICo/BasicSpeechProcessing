@@ -75,7 +75,7 @@ def fb(pow_spectrum_,sample_rate_, NFFT_, nfilt_):
 
 def mfcc(filter_bank_, num_ceps_, cep_lifter_):
     mfccframes = dct(filter_bank_, type=2, axis=1, norm='ortho')[:, 1 : (num_ceps_ + 1)]
-    (nframes, ncoeff) = mfccframes.shape
+    (_,  ncoeff) = mfccframes.shape
     n = np.arange(ncoeff)
     lift = 1 + (cep_lifter_ / 2) * np.sin(np.pi * n / cep_lifter_)
     mfccframes *= lift 
@@ -94,5 +94,5 @@ if __name__ == "__main__":
     _pow_spectrum = frame_power_spectrum(_mag_frames, _NFTT)
     _filter_banks = fb(_pow_spectrum, _sample_rate, _NFTT, 40)
     _mfcc = mfcc(_filter_banks, 12, 40)    
-    
+
     print(_mfcc[0])
